@@ -15,18 +15,21 @@ public class Main {
         g.setColor(Color.blue);
         int counter = 0;
 
+        // For non-black map
+        //-16777216
+        //-16776961
+
+        // For black map
         for (int row = 0; row < height; row++) {
             for (int col = 0; col < width; col++) {
                 result[row][col] = sampleImage.getRGB(col, row);
-                System.out.println(result[row][col]);
-
-                /*
-                if (result[row][col] == -16777216) {
-                    g.drawRect(col,row,1, 1);
+                //System.out.println(result[row][col]);
+                if (result[row][col] != -1) {
+                    g.drawRect(col,row,2, 2);
                     counter += 1;
                 }
 
-                 */
+
 
 
             }
@@ -38,12 +41,13 @@ public class Main {
 
 
     public static void main(String[] args) throws IOException {
-        String imagePath = "Resources/Image.png";
+        String imagePath = "Resources/worldMap.png";
         BufferedImage myPicture = ImageIO.read(new File(imagePath));
         Graphics2D g = (Graphics2D) myPicture.getGraphics();
 
         // Draw map
         int[][] result = get2DPixelArraySlow(myPicture, g);
+
 
         //System.out.println(Arrays.deepToString(result));
 
