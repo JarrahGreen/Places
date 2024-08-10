@@ -30,8 +30,10 @@ public class Main {
 
                 result[row][col] = sampleImage.getRGB(col, row);
 
+                String hexColor = String.format("#%06X", (0xFFFFFF & result[row][col]));
+
                 //write coordinates to text file of pixels
-                writer.append(String.valueOf(result[row][col]));
+                writer.append(hexColor);
                 writer.append("\n");
 
             }
